@@ -1,0 +1,50 @@
+<section class="container">
+    <section class="row">
+        <form> <!--(ngSubmit)="agregarPersona(nombre.value,apellidos.value,edad.value)"-->
+            <h1>Datos Personales</h1>
+            <label>Nombre:</label>
+                <section>
+                 <input type="text" #nombre name="nombre"> 
+                </section>
+            <br>
+            <label>Apellidos:</label>
+            <section>
+                <input type="text" #apellidos name="apellidos">
+            </section>
+            <br>
+            <label>Edad:</label>
+            <section>
+                <input type="number" #edad name="edad"> 
+            </section>
+            <br>
+            <section> <!--BUTTON -->
+                <button class="p-1" type="button" (click)="agregarPersona(nombre.value,apellidos.value,edad.value)">Agregar persona</button> <!--(click)="agregarPersona(nombre.value,apellidos.value,edad.value)"-->
+            </section>
+        </form>
+    </section>
+</section>
+<section>
+    <table>
+        <thead>
+        <tr class="cabeza">
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>Mayor de edad</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let persona of personas">
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.apellidos}}</td>
+            <td>{{persona.edad}}</td>
+            <td>
+                <span *ngIf="persona.edad >= 18; else menorDeEdad">Mayor de edad</span>
+                <ng-template #menorDeEdad>Menor de edad</ng-template>
+            </td>
+        </tr>
+        </tbody>
+    </table>    
+ </section>
+
+
